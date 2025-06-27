@@ -2,10 +2,13 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from services.gemini_service import get_chord_from_gemini
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+
 # Habilita o CORS para permitir requisições do seu front-end
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "https://zchord.zoser.com.br"}}) 
 
 @app.route('/api/chord/<string:chord_name>', methods=['GET'])
 def find_chord(chord_name):
