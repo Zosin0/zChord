@@ -1,0 +1,13 @@
+<div class="home-container">
+  <h1 class="main-title">zChords</h1>
+
+  <app-search-bar (searchTerm)="handleSearch($event)"></app-search-bar>
+
+  <div class="results-area">
+    @if (isLoading) {
+      <div class="spinner"></div>
+    } @else {
+      <app-image-results [chords]="searchResults"></app-image-results>
+    }
+  </div>
+</div>

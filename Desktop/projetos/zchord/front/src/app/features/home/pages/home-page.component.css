@@ -1,0 +1,50 @@
+.home-container {
+  /* Usa Flexbox para controlar o layout dos filhos */
+  display: flex;
+  flex-direction: column; /* Empilha os itens verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+
+  /* Faz o container ocupar a altura total da janela de visualização */
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-title {
+  font-size: 4rem; /* Tamanho de fonte grande */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px; /* Espaço entre o título e a barra de pesquisa */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: Garante que os componentes filhos ocupem uma largura razoável */
+app-search-bar,
+app-image-results {
+  width: 100%;
+  max-width: 600px; /* Define uma largura máxima para a barra e resultados */
+}
+
+.results-area {
+  margin-top: 40px;
+  min-height: 200px; /* Garante um espaço mínimo para o spinner aparecer */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3; /* Cinza claro */
+  border-top: 5px solid #3498db; /* Azul */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

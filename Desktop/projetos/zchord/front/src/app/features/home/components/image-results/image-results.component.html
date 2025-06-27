@@ -1,0 +1,44 @@
+@if (parsedChords.length > 0) {
+  <div class="results-container">
+    @for (chord of parsedChords; track chord.chordName) {
+      <div class="chord-card">
+        <h3>{{ formatChordName(chord.chordName) }}</h3>
+        <div class="chord-diagram">
+          @if (chord.offset > 1) {
+            <div class="fret-offset">{{ chord.offset }}fr</div>
+          }
+
+          @if (chord.barre) {
+            <div class="barre"
+                 [style.width.%]="(chord.barre.toString - chord.barre.fromString) * 20"
+                 [style.left.%]="chord.barre.fromString * 20"
+                 [style.top.%]="10 + ((chord.barre.fret - chord.offset + 0.5) * 22.5)">
+            </div>
+          }
+
+          @for (fret of chord.voicing; let stringIndex = $index; track stringIndex) {
+            @if (fret > 0 && !(chord.barre && fret === chord.barre.fret)) {
+              <div class="dot"
+                   [style.left.%]="stringIndex * 20"
+                   [style.top.%]="10 + ((fret - chord.offset + 0.5) * 22.5)">
+              </div>
+            }
+            @if (fret === 0) {
+              <div class="open-string" [style.left.%]="stringIndex * 20" [style.top.px]="-5">O</div>
+            }
+            @if (fret === -1) {
+               <div class="muted-string" [style.left.%]="stringIndex * 20" [style.top.px]="-5">X</div>
+            }
+          }
+
+          @for (s of [0,1,2,3,4,5]; track s) {
+            <div class="string" [class]="'string-' + s"></div>
+          }
+          @for (f of [1,2,3,4]; track f) {
+            <div class="fret" [class]="'fret-' + f"></div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

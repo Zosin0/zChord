@@ -1,0 +1,17 @@
+/* src/app/features/home/components/search-bar/search-bar.component.css */
+.search-input {
+  width: 100%; /* Ocupa 100% da largura do seu container */
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.25);
+}
